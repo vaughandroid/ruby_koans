@@ -14,9 +14,15 @@
 #   about_triangle_project_2.rb
 #
 def triangle(a, b, c)
-  if (a == b && b == c)
+  ordered = [a, b, c].sort
+  min = ordered[0]
+  mid = ordered[1]
+  max = ordered[2]
+  if (min <= 0 || min + mid <= max)
+    raise TriangleError
+  elsif (min == max) 
     :equilateral
-  elsif (a == b || b == c || a == c)
+  elsif (min == mid || mid == max)
     :isosceles
   else
     :scalene
